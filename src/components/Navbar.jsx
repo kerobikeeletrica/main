@@ -9,7 +9,7 @@ function Navbar() {
     <>
       <nav className="navbar">
         <Link to="/" className="navbar-logo">
-          KERO<span>.</span>
+          KERO BIKE<span>.</span>
         </Link>
 
         <div className="nav-links">

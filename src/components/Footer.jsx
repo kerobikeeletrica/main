@@ -7,7 +7,7 @@ function Footer() {
       <div className="footer-grid">
         {/* Brand */}
         <div>
-          <span className="footer-brand-logo">KERO<span>.</span></span>
+          <span className="footer-brand-logo">KERO BIKE<span>.</span></span>
           <p className="footer-brand-desc">
             Concessionária de motocicletas e veículos elétricos.
             Loja física, pronta entrega e parcelamento em até 48x.
