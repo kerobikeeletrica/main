@@ -1,0 +1,126 @@
+.footer {
+  background-color: #1a1a1a;
+  color: white;
+  padding: 60px 20px 20px;
+}
+
+.footer-content {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 40px;
+  margin-bottom: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid #333;
+}
+
+.footer-section h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.footer-section h3 span {
+  color: #ff6b35;
+}
+
+.footer-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+  color: #aaa;
+}
+
+.footer-section p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #aaa;
+  margin: 0 0 16px 0;
+}
+
+.footer-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-section a {
+  color: #aaa;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.footer-section a:hover {
+  color: #ff6b35;
+  transform: translateX(4px);
+}
+
+.social-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.social-links a {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+  background-color: #ff6b35;
+  transform: translateY(-4px);
+}
+
+.footer-bottom {
+  max-width: 1400px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 20px;
+  font-size: 13px;
+  color: #666;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+  }
+
+  .footer-section h3 {
+    font-size: 18px;
+  }
+
+  .footer-section h4 {
+    font-size: 12px;
+  }
+
+  .footer-section p,
+  .footer-section a {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .footer {
+    padding: 40px 16px 16px;
+  }
+}

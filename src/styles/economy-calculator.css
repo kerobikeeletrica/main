@@ -1,0 +1,188 @@
+.economy-calculator {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.calculator-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.calculator-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.calculator-header h2 {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.calculator-header p {
+  font-size: 18px;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.calculator-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.calculator-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-group label {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.input-group input[type="range"] {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.3);
+  outline: none;
+  -webkit-appearance: none;
+}
+
+.input-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-group input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: white;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.input-group select {
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none;
+  font-size: 16px;
+  background-color: white;
+  color: #333;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.input-value {
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.calculator-results {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.result-card {
+  background-color: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.result-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  opacity: 0.9;
+  margin-bottom: 12px;
+}
+
+.result-card .amount {
+  font-size: 42px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1;
+}
+
+.result-card .period {
+  font-size: 14px;
+  opacity: 0.8;
+  display: block;
+  margin-top: 8px;
+}
+
+.result-card .yearly {
+  font-size: 14px;
+  margin-top: 12px;
+  opacity: 0.8;
+}
+
+.result-card.savings {
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 1024px) {
+  .calculator-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .calculator-header h2 {
+    font-size: 36px;
+  }
+
+  .result-card {
+    padding: 24px;
+  }
+
+  .result-card .amount {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .economy-calculator {
+    padding: 40px 16px;
+  }
+
+  .calculator-header h2 {
+    font-size: 28px;
+  }
+
+  .calculator-header p {
+    font-size: 16px;
+  }
+
+  .calculator-inputs {
+    gap: 24px;
+  }
+
+  .result-card {
+    padding: 20px;
+  }
+
+  .result-card .amount {
+    font-size: 28px;
+  }
+}

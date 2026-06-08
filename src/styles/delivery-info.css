@@ -1,0 +1,147 @@
+.delivery-info {
+  background-color: white;
+}
+
+.delivery-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.delivery-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.delivery-step {
+  text-align: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.step-number {
+  width: 60px;
+  height: 60px;
+  background-color: #ff6b35;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.delivery-step h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin: 0;
+}
+
+.delivery-step p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.step-connector {
+  position: absolute;
+  top: 30px;
+  left: 110%;
+  width: calc(100% - 140px);
+  height: 2px;
+  background: linear-gradient(to right, #ff6b35, transparent);
+}
+
+.step-connector:last-child {
+  display: none;
+}
+
+.delivery-info-box {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 12px;
+  padding: 40px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  color: white;
+}
+
+.info-item {
+  display: flex;
+  gap: 16px;
+}
+
+.info-icon {
+  font-size: 32px;
+  flex-shrink: 0;
+}
+
+.info-item h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 4px 0;
+}
+
+.info-item p {
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
+  line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+  .delivery-steps {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+
+  .step-connector {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .delivery-steps {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .delivery-info-box {
+    padding: 24px;
+    gap: 24px;
+  }
+
+  .step-number {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .delivery-step h3 {
+    font-size: 16px;
+  }
+
+  .delivery-step p {
+    font-size: 13px;
+  }
+
+  .info-icon {
+    font-size: 28px;
+  }
+
+  .info-item h4 {
+    font-size: 14px;
+  }
+
+  .info-item p {
+    font-size: 13px;
+  }
+}
