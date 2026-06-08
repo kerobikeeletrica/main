@@ -1,6 +1,13 @@
 // Fonte dos dados: modelos reais vendidos pela Kero Bike Veículos Elétricos (@kero_bikee)
 // Imagens oficiais da linha Mova Motos (fabricante)
 
+import x13Img from '../img/X13.png'
+import x11Img from '../img/X11.png'
+import x12Img from '../img/X12.png'
+import gigaImg from '../img/GIGA.png'
+import dotImg from '../img/DOT.png'
+import pedalassistidoImg from '../img/PEDALASSISTIDO.png'
+
 export const mockProducts = [
   {
     id: 1,
@@ -9,9 +16,9 @@ export const mockProducts = [
     featured: true,
     description: 'A mais completa da linha. Motor 1000W com bateria de lítio removível 60V 20Ah, autonomia de até 60 km e capacidade de carga de 180 kg. Ideal para quem busca potência e praticidade no dia a dia urbano.',
     price: 8499,
-    image: '../src/img/X13.png',
+    image: x13Img,
     images: [
-      '../src/img/X13.png',
+      x13Img,
     ],
     motor: '1000W',
     max_speed: 'Até 32 km/h',
@@ -28,9 +35,9 @@ export const mockProducts = [
     featured: false,
     description: 'Motor brushless de 1000W com bateria de longa duração 60V 23Ah. Tecnologia brushless garante menor manutenção e maior eficiência energética.',
     price: 7999,
-    image: '../src/img/X11.png',
+    image: x11Img,
     images: [
-      '../src/img/X11.png',
+      x11Img,
     ],
     motor: '1000W Brushless',
     max_speed: 'Até 32 km/h',
@@ -47,9 +54,9 @@ export const mockProducts = [
     featured: false,
     description: 'Leve, prática e eficiente para deslocamentos curtos do dia a dia. Design compacto facilita a manobra em trânsito e estacionamento. Ótima opção custo-benefício.',
     price: 5499,
-    image: '../src/img/X12.png',
+    image: x12Img,
     images: [
-      '../src/img/X12.png',
+      x12Img,
     ],
     motor: '800W',
     max_speed: 'Até 32 km/h',
@@ -66,9 +73,9 @@ export const mockProducts = [
     featured: false,
     description: 'Performance e conforto em uma scooter elétrica versátil. A NEO equilibra autonomia, design moderno e capacidade de carga, sendo uma das mais vendidas da linha.',
     price: 8499,
-    image: '../src/img/GIGA.png',
+    image: gigaImg,
     images: [
-      '../src/img/GIGA.png',
+      gigaImg,
     ],
     motor: '1000W',
     max_speed: 'Até 32 km/h',
@@ -85,9 +92,9 @@ export const mockProducts = [
     featured: false,
     description: 'Maior autonomia e capacidade de carga de toda a linha. Construída para durar, a TANK suporta até 200 kg e percorre até 65 km com uma única carga. Para quem exige o máximo.',
     price: 10490,
-    image: '../src/img/DOT.png',
+    image: dotImg,
     images: [
-      '../src/img/DOT.png',
+      dotImg,
     ],
     motor: '1000W',
     max_speed: 'Até 32 km/h',
@@ -104,9 +111,9 @@ export const mockProducts = [
     featured: false,
     description: 'A porta de entrada para o mundo elétrico. Econômica, prática e ideal para quem está começando. Motor 1000W silencioso e bateria de chumbo removível.',
     price: 3990,
-    image: '../src/img/PEDALASSISTIDO.png',
+    image: pedalassistidoImg,
     images: [
-      '../src/img/PEDALASSISTIDO.png',
+      pedalassistidoImg,
     ],
     motor: '1000W',
     max_speed: 'Até 32 km/h',
