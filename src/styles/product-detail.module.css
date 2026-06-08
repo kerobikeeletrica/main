@@ -1,0 +1,284 @@
+/* product-detail.module.css */
+
+.productDetailPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2rem 1.5rem;
+  min-height: 100vh;
+}
+
+.loadingState,
+.errorState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  font-size: 1.2rem;
+  opacity: 0.6;
+}
+
+.backButton {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: inherit;
+  padding: 0.5rem 1.1rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-size: 0.88rem;
+  backdrop-filter: blur(8px);
+  transition: transform 0.2s, background 0.2s;
+}
+.backButton:hover {
+  transform: translateX(-3px);
+  background: rgba(255, 255, 255, 0.13);
+}
+
+.productDetailContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.productDetailImage {
+  flex: 1 1 320px;
+  max-width: 520px;
+}
+
+.productDetailInfo {
+  flex: 1 1 320px;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+
+.productCategory {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #ffb400;
+  font-weight: 700;
+}
+
+.productTitle {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.productRating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stars {
+  color: gold;
+  font-size: 1rem;
+}
+
+.reviewCount {
+  font-size: 0.82rem;
+  opacity: 0.55;
+}
+
+.productLongDescription {
+  line-height: 1.7;
+  opacity: 0.82;
+  font-size: 0.95rem;
+}
+
+/* Destaques */
+.highlightsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.highlightItem {
+  font-size: 0.9rem;
+  color: #4cde80;
+  font-weight: 500;
+}
+
+/* Preço */
+.priceSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #ffb400;
+}
+
+.availability {
+  font-size: 0.82rem;
+  color: #4caf50;
+  font-weight: 600;
+}
+
+/* Especificações */
+.specsDetail h3 {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  opacity: 0.5;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.specsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem 1.2rem;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 0.8rem;
+  padding: 1rem;
+}
+
+.detailSpecItem {
+  font-size: 0.88rem;
+  opacity: 0.8;
+}
+.detailSpecItem strong {
+  opacity: 1;
+  margin-right: 0.3rem;
+}
+
+/* Ações */
+.purchaseSection {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.quantitySelector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+}
+.quantitySelector select {
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: inherit;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btnPrimaryLarge {
+  flex: 1;
+  background: #ffb400;
+  color: #000;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background 0.2s, transform 0.15s;
+}
+.btnPrimaryLarge:hover {
+  background: #ffd54f;
+  transform: translateY(-1px);
+}
+
+.btnWhatsapp {
+  width: 100%;
+  background: #25d366;
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: background 0.2s, transform 0.15s;
+}
+.btnWhatsapp:hover {
+  background: #1ebe5d;
+  transform: translateY(-1px);
+}
+
+/* Info de entrega */
+.shippingInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.85rem;
+  opacity: 0.7;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding-top: 1rem;
+}
+
+/* Avaliações */
+.reviewsSection {
+  width: 100%;
+  max-width: 1100px;
+}
+.reviewsSection h2 {
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.reviewsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reviewItem {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding-bottom: 1rem;
+}
+
+.reviewHeader {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.reviewRating {
+  color: gold;
+}
+
+.reviewText {
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Responsivo */
+@media (max-width: 680px) {
+  .productTitle {
+    font-size: 1.7rem;
+  }
+  .price {
+    font-size: 1.7rem;
+  }
+  .specsGrid {
+    grid-template-columns: 1fr;
+  }
+  .purchaseSection {
+    flex-direction: column;
+  }
+  .btnPrimaryLarge {
+    width: 100%;
+  }
+}

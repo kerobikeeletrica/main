@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { supabase } from '../services/supabaseClient'
-import '../styles/product-detail.css'
+import { Helmet } from 'react-helmet-async'
+import ProductImageCarousel from '../components/ProductImageCarousel'
+import { mockProducts } from '../data/products'
+import styles from '../styles/product-detail.module.css'
 
 function ProductDetail() {
   const { id } = useParams()
@@ -27,9 +30,9 @@ function ProductDetail() {
       if (error) throw error
       setProduct(data)
     } catch (err) {
-      console.error('Erro ao buscar produto:', err)
-      // Dados de exemplo
-      setProduct(mockProduct)
+      // Fallback para dados locais
+      const found = mockProducts.find(p => String(p.id) === String(id))
+      setProduct(found || mockProducts[0])
     } finally {
       setLoading(false)
     }
@@ -44,109 +47,148 @@ function ProductDetail() {
 
       if (error) throw error
       setReviews(data || [])
-    } catch (err) {
-      console.error('Erro ao buscar reviews:', err)
+    } catch {
+      setReviews([])
     }
+  }
+
+  const handleWhatsApp = () => {
+    const msg = encodeURIComponent(
+      `Olá! Tenho interesse na ${product.name} por R$ ${product.price.toLocaleString('pt-BR')}. Podem me passar mais informações?`
+    )
+    window.open(`https://bit.ly/2hRFHnW?text=${msg}`, '_blank')
   }
 
   const handleAddToCart = () => {
     const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-    cart.push({
-      ...product,
-      quantity,
-      cartId: Date.now()
-    })
+    cart.push({ ...product, quantity, cartId: Date.now() })
     localStorage.setItem('cart', JSON.stringify(cart))
     navigate('/checkout')
   }
 
-  if (loading) return <div className="loading">Carregando produto...</div>
-  if (!product) return <div className="error">Produto não encontrado</div>
+  if (loading) return <div className={styles.loadingState}>Carregando produto...</div>
+  if (!product) return <div className={styles.errorState}>Produto não encontrado</div>
+
+  const productImages = product.images?.length
+    ? product.images
+    : product.image
+    ? [product.image]
+    : []
 
   return (
-    <div className="product-detail-page">
-      <button className="back-button" onClick={() => navigate('/')}>
-        ← Voltar
+    <div className={styles.productDetailPage}>
+      <Helmet>
+        <title>{product.name} – Kero Bike Veículos Elétricos</title>
+        <meta name="description" content={product.description} />
+      </Helmet>
+
+      <button className={styles.backButton} onClick={() => navigate('/')}>
+        ← Voltar ao catálogo
       </button>
 
-      <div className="product-detail-container">
-        <div className="product-detail-image">
-          <img src={product.image || '🏍️'} alt={product.name} />
+      <div className={styles.productDetailContainer}>
+        {/* Coluna da imagem */}
+        <div className={styles.productDetailImage}>
+          <ProductImageCarousel images={productImages} />
         </div>
 
-        <div className="product-detail-info">
-          <span className="product-category">{product.category}</span>
-          <h1 className="product-title">{product.name}</h1>
-          
-          <div className="product-rating">
-            <span className="stars">★★★★★</span>
-            <span className="review-count">({reviews.length} avaliações)</span>
+        {/* Coluna das informações */}
+        <div className={styles.productDetailInfo}>
+          <span className={styles.productCategory}>{product.category}</span>
+          <h1 className={styles.productTitle}>{product.name}</h1>
+
+          <div className={styles.productRating}>
+            <span className={styles.stars}>★★★★★</span>
+            <span className={styles.reviewCount}>
+              {reviews.length > 0 ? `${reviews.length} avaliações` : 'Sem avaliações ainda'}
+            </span>
           </div>
 
-          <p className="product-long-description">{product.description}</p>
+          <p className={styles.productLongDescription}>{product.description}</p>
 
-          <div className="price-section">
-            <span className="price">R$ {product.price.toLocaleString('pt-BR')}</span>
-            <span className="availability">Em estoque</span>
+          {/* Destaques */}
+          {product.highlights && (
+            <ul className={styles.highlightsList}>
+              {product.highlights.map((h, i) => (
+                <li key={i} className={styles.highlightItem}>✓ {h}</li>
+              ))}
+            </ul>
+          )}
+
+          {/* Preço */}
+          <div className={styles.priceSection}>
+            <span className={styles.price}>
+              R$ {product.price.toLocaleString('pt-BR')}
+            </span>
+            <span className={styles.availability}>Em estoque · Pronta entrega</span>
           </div>
 
-          <div className="specs-detail">
+          {/* Especificações */}
+          <div className={styles.specsDetail}>
             <h3>Especificações Técnicas</h3>
-            <div className="specs-grid">
-              <div className="detail-spec-item">
+            <div className={styles.specsGrid}>
+              <div className={styles.detailSpecItem}>
                 <strong>Motor:</strong> {product.motor}
               </div>
-              <div className="detail-spec-item">
-                <strong>Velocidade Máxima:</strong> {product.max_speed}
+              <div className={styles.detailSpecItem}>
+                <strong>Vel. Máxima:</strong> {product.max_speed}
               </div>
-              <div className="detail-spec-item">
+              <div className={styles.detailSpecItem}>
                 <strong>Autonomia:</strong> {product.range}
               </div>
-              <div className="detail-spec-item">
-                <strong>Tempo de Recarga:</strong> {product.charge_time}
+              <div className={styles.detailSpecItem}>
+                <strong>Recarga:</strong> {product.charge_time}
               </div>
-              <div className="detail-spec-item">
+              <div className={styles.detailSpecItem}>
                 <strong>Bateria:</strong> {product.battery}
               </div>
-              <div className="detail-spec-item">
-                <strong>Capacidade de Carga:</strong> {product.weight_capacity}
+              <div className={styles.detailSpecItem}>
+                <strong>Cap. de Carga:</strong> {product.weight_capacity}
               </div>
             </div>
           </div>
 
-          <div className="purchase-section">
-            <div className="quantity-selector">
-              <label>Quantidade:</label>
+          {/* Ações */}
+          <div className={styles.purchaseSection}>
+            <div className={styles.quantitySelector}>
+              <label>Qtd:</label>
               <select value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))}>
                 {[1, 2, 3, 4, 5].map(num => (
                   <option key={num} value={num}>{num}</option>
                 ))}
               </select>
             </div>
-            <button className="btn btn-primary btn-large" onClick={handleAddToCart}>
+            <button className={styles.btnPrimaryLarge} onClick={handleAddToCart}>
               Adicionar ao Carrinho
             </button>
           </div>
 
-          <div className="shipping-info">
-            <p>✓ Entrega em 24h para São Paulo</p>
+          <button className={styles.btnWhatsapp} onClick={handleWhatsApp}>
+            💬 Consultar pelo WhatsApp
+          </button>
+
+          {/* Info de entrega */}
+          <div className={styles.shippingInfo}>
+            <p>✓ Pronta entrega · Rio de Janeiro</p>
+            <p>✓ Parcelamos em até 48x</p>
             <p>✓ Pague na entrega</p>
-            <p>✓ 7 dias de garantia de devolução</p>
+            <p>✓ Sem CNH necessária</p>
           </div>
         </div>
       </div>
 
+      {/* Avaliações */}
       {reviews.length > 0 && (
-        <div className="reviews-section">
+        <div className={styles.reviewsSection}>
           <h2>Avaliações dos Clientes</h2>
-          <div className="reviews-list">
+          <div className={styles.reviewsList}>
             {reviews.map((review, index) => (
-              <div key={index} className="review-item">
-                <div className="review-header">
+              <div key={index} className={styles.reviewItem}>
+                <div className={styles.reviewHeader}>
                   <strong>{review.author}</strong>
-                  <span className="review-rating">{'★'.repeat(review.rating)}</span>
+                  <span className={styles.reviewRating}>{'★'.repeat(review.rating)}</span>
                 </div>
-                <p className="review-text">{review.comment}</p>
+                <p className={styles.reviewText}>{review.comment}</p>
               </div>
             ))}
           </div>
@@ -154,21 +196,6 @@ function ProductDetail() {
       )}
     </div>
   )
-}
-
-const mockProduct = {
-  id: 1,
-  name: 'X13 Premium',
-  category: 'Premium',
-  description: 'Autonomia de sobra e motor robusto para o dia a dia urbano. A moto perfeita para quem quer máximo desempenho.',
-  price: 8499,
-  image: '🏍️',
-  motor: '1000W',
-  max_speed: 'Até 32 km/h',
-  range: 'Até 60 km',
-  charge_time: '5 a 6 horas',
-  battery: 'Lítio removível 60V 20Ah',
-  weight_capacity: 'Até 180 kg'
 }
 
 export default ProductDetail

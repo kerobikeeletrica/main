@@ -7,8 +7,8 @@ function Hero() {
       {/* Background */}
       <div className="hero-bg">
         <img 
-          src="https://movamotos.com/__l5e/assets-v1/2b2dda01-5b4a-4852-bb94-a79d94245ce5/mova-store.png" 
-          alt="Loja MOVA - Mobilidade Elétrica" 
+          src="../src/img/principal.png" 
+          alt="Loja kerobike - Mobilidade Elétrica" 
           className="hero-bg-image" 
         />
         <div className="hero-bg-gradient" />
