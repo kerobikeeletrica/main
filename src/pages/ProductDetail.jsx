@@ -93,22 +93,22 @@ function ProductDetail() {
           <div className="specs-detail">
             <h3>Especificações Técnicas</h3>
             <div className="specs-grid">
-              <div className="spec-item">
+              <div className="detail-spec-item">
                 <strong>Motor:</strong> {product.motor}
               </div>
-              <div className="spec-item">
+              <div className="detail-spec-item">
                 <strong>Velocidade Máxima:</strong> {product.max_speed}
               </div>
-              <div className="spec-item">
+              <div className="detail-spec-item">
                 <strong>Autonomia:</strong> {product.range}
               </div>
-              <div className="spec-item">
+              <div className="detail-spec-item">
                 <strong>Tempo de Recarga:</strong> {product.charge_time}
               </div>
-              <div className="spec-item">
+              <div className="detail-spec-item">
                 <strong>Bateria:</strong> {product.battery}
               </div>
-              <div className="spec-item">
+              <div className="detail-spec-item">
                 <strong>Capacidade de Carga:</strong> {product.weight_capacity}
               </div>
             </div>

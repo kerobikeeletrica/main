@@ -136,7 +136,7 @@
   gap: 16px;
 }
 
-.spec-item {
+.detail-spec-item {
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -145,13 +145,13 @@
   border-radius: 6px;
 }
 
-.spec-item strong {
+.detail-spec-item strong {
   font-size: 13px;
   color: #666;
   text-transform: uppercase;
 }
 
-.spec-item {
+.detail-spec-item span {
   font-size: 14px;
   color: #333;
   font-weight: 500;
