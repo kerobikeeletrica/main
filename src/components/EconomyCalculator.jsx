@@ -31,7 +31,7 @@ function EconomyCalculator() {
                 <span style={{ color: 'var(--brand)', fontStyle: 'italic' }}>dinheiro.</span>
               </h2>
               <p className="calc-description">
-                Veja quanto você economiza trocando sua moto a combustão por uma Kerobike. Tudo em tempo real.
+                Veja quanto você economiza trocando sua moto a combustão por uma moto da Kero Bike. Tudo em tempo real.
               </p>
             </div>
 

@@ -5,7 +5,7 @@ function ContactWidget() {
   return (
     <div className="contact-widget">
       <a
-        href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20as%20motos%20elétricas%20Kerobike."
+        href="https://bit.ly/2hRFHnW"
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Falar no WhatsApp"

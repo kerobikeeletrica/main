@@ -16,7 +16,7 @@ function Benefits() {
       <div className="benefits-inner">
         <div className="benefits-header">
           <div>
-            <span className="section-label">Por que Kerobike?</span>
+            <span className="section-label">Por que Kero Bike?</span>
             <h2 className="section-title">
               Vantagens que<br />
               <span className="muted">fazem diferença.</span>

@@ -19,7 +19,7 @@ function Hero() {
       <div className="hero-content">
         <div className="hero-eyebrow">
           <span className="hero-dot" />
-          <span className="hero-eyebrow-text">Mobilidade Elétrica Premium</span>
+          <span className="hero-eyebrow-text">Concessionária de Veículos Elétricos</span>
         </div>
 
         <h1 className="hero-title">
@@ -29,8 +29,8 @@ function Hero() {
 
         <div className="hero-bottom">
           <p className="hero-description">
-            Mobilidade premium sem burocracia. Sem CNH, sem IPVA, sem barulho.
-            Escolha sua moto e receba hoje mesmo no seu endereço.
+            Kero Bike Veículos Elétricos. Loja física, pronta entrega e parcelamento em até 48x. Diga Adeus à Habilitação!
+            Escolha sua moto e receba hoje mesmo.
           </p>
 
           <div className="hero-cta">
@@ -48,9 +48,9 @@ function Hero() {
       <div className="hero-bottom-bar">
         <span>Sem CNH</span>
         <span className="hero-bottom-bar-dot" />
-        <span>Entrega em 24h</span>
+        <span>Pronta Entrega</span>
         <span className="hero-bottom-bar-dot" />
-        <span>Pague na entrega</span>
+        <span>Até 48x</span>
       </div>
     </section>
   )

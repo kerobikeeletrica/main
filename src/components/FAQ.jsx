@@ -16,7 +16,7 @@ const faqs = [
   },
   {
     q: 'Qual é a garantia?',
-    a: 'Toda Kerobike tem 1 ano completo de garantia contra defeitos de fábrica, cobrindo motor, controlador e estrutura. Se algo acontecer, a gente busca, conserta e devolve sem complicação.'
+    a: 'Toda moto Kero Bike tem 1 ano completo de garantia contra defeitos de fábrica, cobrindo motor, controlador e estrutura. Se algo acontecer, a gente busca, conserta e devolve sem complicação.'
   },
   {
     q: 'Posso fazer um test ride antes?',

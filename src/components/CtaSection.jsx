@@ -11,7 +11,7 @@ function CtaSection() {
         <div className="cta-inner">
           <span className="cta-eyebrow">Próxima entrega: amanhã</span>
           <h2 className="cta-title">
-            Sua Kerobike<br />
+            Sua Kero Bike<br />
             <em>te espera.</em>
           </h2>
           <p className="cta-subtitle">

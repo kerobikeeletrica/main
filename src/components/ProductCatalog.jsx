@@ -127,7 +127,7 @@ function ProductCatalog() {
     <section className="product-catalog" id="modelos">
       <div className="catalog-header">
         <div className="catalog-header-left">
-          <span className="section-label">Lineup Kerobike</span>
+          <span className="section-label">Lineup Kero Bike</span>
           <h2 className="section-title">
             Seis modelos.<br />
             <span className="muted">Uma única filosofia.</span>
