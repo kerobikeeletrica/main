@@ -1,5 +1,6 @@
 import React from 'react'
 import '../styles/hero.css'
+import principalImg from '../img/principal.png'
 
 function Hero() {
   return (
@@ -7,7 +8,7 @@ function Hero() {
       {/* Background */}
       <div className="hero-bg">
         <img 
-          src="../src/img/principal.png" 
+          src={principalImg} 
           alt="Loja kerobike - Mobilidade Elétrica" 
           className="hero-bg-image" 
         />
