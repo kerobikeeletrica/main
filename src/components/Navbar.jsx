@@ -4,45 +4,36 @@ import '../styles/navbar.css'
 
 function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false)
-  const [cartCount, setCartCount] = React.useState(0)
-
-  React.useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]')
-    setCartCount(cart.length)
-  }, [])
 
   return (
-    <nav className="navbar">
-      <div className="navbar-container">
+    <>
+      <nav className="navbar">
         <Link to="/" className="navbar-logo">
-          MOTO<span>E</span>
+          KERO<span>.</span>
         </Link>
-        
-        <div className={`nav-menu ${isOpen ? 'active' : ''}`}>
-          <a href="#modelos" className="nav-link" onClick={() => setIsOpen(false)}>
-            Modelos
-          </a>
-          <a href="#economia" className="nav-link" onClick={() => setIsOpen(false)}>
-            Economia
-          </a>
-          <a href="#entregas" className="nav-link" onClick={() => setIsOpen(false)}>
-            Entregas
-          </a>
-          <a href="#suporte" className="nav-link" onClick={() => setIsOpen(false)}>
-            Suporte
-          </a>
-          <Link to="/checkout" className="nav-link cta-button" onClick={() => setIsOpen(false)}>
-            🛒 Carrinho {cartCount > 0 && <span className="cart-badge">{cartCount}</span>}
-          </Link>
+
+        <div className="nav-links">
+          <a href="#modelos" className="nav-link">Modelos</a>
+          <a href="#economia" className="nav-link">Economia</a>
+          <a href="#entregas" className="nav-link">Entregas</a>
+          <a href="#faq" className="nav-link">Suporte</a>
+          <span className="nav-indicator" />
         </div>
 
-        <div className="hamburger" onClick={() => setIsOpen(!isOpen)}>
-          <span></span>
-          <span></span>
-          <span></span>
+        <div className="hamburger" onClick={() => setIsOpen(!isOpen)} aria-label="Menu">
+          <span style={{ transform: isOpen ? 'rotate(45deg) translate(5px,5px)' : 'none' }} />
+          <span style={{ opacity: isOpen ? 0 : 1 }} />
+          <span style={{ transform: isOpen ? 'rotate(-45deg) translate(5px,-5px)' : 'none' }} />
         </div>
+      </nav>
+
+      <div className={`mobile-menu ${isOpen ? 'open' : ''}`}>
+        <a href="#modelos" className="nav-link" onClick={() => setIsOpen(false)}>Modelos</a>
+        <a href="#economia" className="nav-link" onClick={() => setIsOpen(false)}>Economia</a>
+        <a href="#entregas" className="nav-link" onClick={() => setIsOpen(false)}>Entregas</a>
+        <a href="#faq" className="nav-link" onClick={() => setIsOpen(false)}>Suporte</a>
       </div>
-    </nav>
+    </>
   )
 }
 

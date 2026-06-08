@@ -1,67 +1,59 @@
 import React, { useState } from 'react'
 import '../styles/faq.css'
 
-function FAQ() {
-  const [openIndex, setOpenIndex] = useState(null)
+const faqs = [
+  {
+    q: 'Preciso de CNH para andar?',
+    a: 'Não. Os nossos modelos são equiparados a bicicletas elétricas pela legislação brasileira — você anda sem CNH, sem IPVA e sem licenciamento obrigatório.'
+  },
+  {
+    q: 'Como funciona a entrega?',
+    a: 'Simples assim: você fala com a gente pelo WhatsApp, escolhe sua moto e entregamos no mesmo dia ou em até 24 horas diretamente no seu endereço. Sem burocracia, sem frete escondido.'
+  },
+  {
+    q: 'Posso pagar na entrega?',
+    a: 'Pode sim — e fazemos questão disso. Aceitamos Pix (com 5% de desconto à vista), cartão em até 18x e dinheiro na hora da entrega. Você só paga quando a moto estiver na sua mão.'
+  },
+  {
+    q: 'Qual é a garantia?',
+    a: 'Toda Kerobike tem 1 ano completo de garantia contra defeitos de fábrica, cobrindo motor, controlador e estrutura. Se algo acontecer, a gente busca, conserta e devolve sem complicação.'
+  },
+  {
+    q: 'Posso fazer um test ride antes?',
+    a: 'Pode sim! Levamos a moto até você para um test ride sem compromisso. Você anda, sente a aceleração, testa o freio e a posição de pilotagem. Só depois de aprovar é que fechamos a venda.'
+  },
+]
 
-  const faqs = [
-    {
-      question: 'Preciso de CNH para andar de moto elétrica?',
-      answer: 'Não! Motos elétricas com potência de até 1000W e velocidade máxima de 32 km/h não requerem CNH. Você pode usar desde os 16 anos.'
-    },
-    {
-      question: 'Qual é a autonomia real das motos?',
-      answer: 'A autonomia varia de 40 a 60 km dependendo do modelo, condições de uso e terreno. Em uso urbano normal, você consegue fazer vários dias de uso com uma carga.'
-    },
-    {
-      question: 'Quanto tempo leva para carregar?',
-      answer: 'Depende do modelo: de 4 a 8 horas. Você pode carregar em casa, no trabalho ou qualquer lugar com tomada. A bateria é removível.'
-    },
-    {
-      question: 'Vocês entregam em minha cidade?',
-      answer: 'Entregamos em São Paulo, Rio de Janeiro e Belo Horizonte. Em breve expandiremos para outras cidades. Acompanhe nossas redes sociais!'
-    },
-    {
-      question: 'Qual é o custo de manutenção?',
-      answer: 'Muito baixo! Sem óleo, sem velas, sem correia. A manutenção se resume a limpeza, pneus e freios. Custo médio de R$ 30-50/mês.'
-    },
-    {
-      question: 'As motos são impermeáveis?',
-      answer: 'Sim! Todas as nossas motos têm proteção contra água e poeira (IP65). Você pode usar na chuva sem problemas. Basta cuidado normal.'
-    },
-    {
-      question: 'Posso devolver se não gostar?',
-      answer: '7 dias de garantia de devolução sem perguntas! Se não se sentir satisfeito, fazemos a devolução completa.'
-    },
-    {
-      question: 'Tem seguro?',
-      answer: 'Nós oferecemos opções de seguro mensal a partir de R$ 40. Cobertura contra roubo, furto e danos.'
-    }
-  ]
+function FAQ() {
+  const [open, setOpen] = useState(0)
+
+  const toggle = (i) => setOpen(open === i ? null : i)
 
   return (
-    <section className="faq" id="suporte">
-      <div className="faq-container">
+    <section className="faq" id="faq">
+      <div className="faq-inner">
         <div className="faq-header">
-          <h2>Perguntas Frequentes</h2>
-          <p>Tire suas dúvidas sobre nossas motos elétricas</p>
+          <span className="section-label">Tira-dúvidas</span>
+          <h2 className="section-title">
+            Tudo o que você<br />
+            <span className="muted">precisa saber.</span>
+          </h2>
         </div>
 
         <div className="faq-list">
-          {faqs.map((faq, index) => (
-            <div key={index} className={`faq-item ${openIndex === index ? 'open' : ''}`}>
+          {faqs.map((item, i) => (
+            <div key={i} className="faq-item">
               <button
                 className="faq-question"
-                onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                onClick={() => toggle(i)}
+                aria-expanded={open === i}
               >
-                <span>{faq.question}</span>
-                <span className="faq-icon">{openIndex === index ? '−' : '+'}</span>
+                <span className={`faq-q-text ${open === i ? 'open' : ''}`}>{item.q}</span>
+                <span className={`faq-icon ${open === i ? 'open' : ''}`}>+</span>
               </button>
-              {openIndex === index && (
-                <div className="faq-answer">
-                  <p>{faq.answer}</p>
-                </div>
-              )}
+              <div className={`faq-answer ${open === i ? 'open' : ''}`}>
+                <p>{item.a}</p>
+              </div>
             </div>
           ))}
         </div>

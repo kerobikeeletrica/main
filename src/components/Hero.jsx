@@ -1,70 +1,51 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import '../styles/hero.css'
 
 function Hero() {
   return (
     <section className="hero" id="top">
+      {/* Background */}
+      <div className="hero-bg">
+        <div className="hero-bg-gradient" />
+      </div>
+      <div className="hero-glow" />
+
+      {/* Content */}
       <div className="hero-content">
-        <span className="hero-badge">
-          ✓ Operação em São Paulo • Rio de Janeiro • Belo Horizonte
-        </span>
-        
+        <div className="hero-eyebrow">
+          <span className="hero-dot" />
+          <span className="hero-eyebrow-text">Mobilidade Elétrica Premium</span>
+        </div>
+
         <h1 className="hero-title">
-          <span className="highlight">MOBILIDADE</span>
-          <span className="break-line">ELÉTRICA PREMIUM</span>
+          A CIDADE É<br />
+          <span className="hero-title-brand">ELÉTRICA.</span>
         </h1>
 
-        <p className="hero-description">
-          Motos elétricas de alta performance sem burocracia. Sem CNH, sem IPVA, sem barulho. 
-          Receba sua moto hoje mesmo no seu endereço.
-        </p>
+        <div className="hero-bottom">
+          <p className="hero-description">
+            Mobilidade premium sem burocracia. Sem CNH, sem IPVA, sem barulho.
+            Escolha sua moto e receba hoje mesmo no seu endereço.
+          </p>
 
-        <div className="hero-stats">
-          <div className="stat">
-            <strong>500+</strong>
-            <span>Clientes Satisfeitos</span>
-          </div>
-          <div className="stat">
-            <strong>24h</strong>
-            <span>Entrega Garantida</span>
-          </div>
-          <div className="stat">
-            <strong>80%</strong>
-            <span>Economia Mensal</span>
-          </div>
-        </div>
-
-        <div className="hero-cta">
-          <a href="#modelos" className="btn btn-primary">
-            Escolher minha Moto
-          </a>
-          <a href="#economia" className="btn btn-secondary">
-            Calcular Economia
-          </a>
-        </div>
-
-        <div className="hero-benefits">
-          <div className="benefit">
-            <span className="benefit-icon">✓</span>
-            <p>Sem CNH</p>
-          </div>
-          <div className="benefit">
-            <span className="benefit-icon">✓</span>
-            <p>Entrega em 24h</p>
-          </div>
-          <div className="benefit">
-            <span className="benefit-icon">✓</span>
-            <p>Pague na Entrega</p>
+          <div className="hero-cta">
+            <a href="#modelos" className="btn btn-primary btn-large">
+              Escolher minha Moto
+            </a>
+            <a href="#economia" className="btn btn-secondary btn-large">
+              Calcular economia
+            </a>
           </div>
         </div>
       </div>
 
-      <div className="hero-image">
-        <div className="placeholder-image">
-          <p>🏍️</p>
-          <span>Moto Elétrica Premium</span>
-        </div>
+      {/* Bottom bar */}
+      <div className="hero-bottom-bar">
+        <span>Sem CNH</span>
+        <span className="hero-bottom-bar-dot" />
+        <span>Entrega em 24h</span>
+        <span className="hero-bottom-bar-dot" />
+        <span>Pague na entrega</span>
       </div>
     </section>
   )

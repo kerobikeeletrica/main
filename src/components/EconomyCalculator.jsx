@@ -2,106 +2,114 @@ import React, { useState } from 'react'
 import '../styles/economy-calculator.css'
 
 function EconomyCalculator() {
-  const [monthlyKm, setMonthlyKm] = useState(500)
-  const [currentTransport, setCurrentTransport] = useState('car')
+  const [gasolinaCost, setGasolinaCost] = useState(450)
+  const [monthlyKm, setMonthlyKm] = useState(800)
 
-  const costs = {
-    car: {
-      fuel: 8.5,
-      maintenance: 200,
-      parking: 300,
-      insurance: 150
-    },
-    motorcycle: {
-      fuel: 5,
-      maintenance: 100,
-      parking: 100,
-      insurance: 80
-    },
-    bus: {
-      fuel: 0,
-      maintenance: 0,
-      parking: 0,
-      insurance: 0
-    }
-  }
+  const electricCostPerKm = 0.07 // R$/km
+  const electricMonthly = monthlyKm * electricCostPerKm
+  const maintenanceSaving = 0.85
 
-  const electricCost = {
-    electricity: 0.5,
-    maintenance: 30,
-    parking: 0,
-    insurance: 40
-  }
+  const monthlySaving = gasolinaCost - electricMonthly
+  const yearlySaving = Math.round(monthlySaving * 12)
 
-  const currentCost = (() => {
-    const transport = costs[currentTransport]
-    const fuelCost = (monthlyKm / 12) * transport.fuel
-    const monthlyMaintenance = transport.maintenance
-    const monthlyParking = transport.parking
-    const monthlyInsurance = transport.insurance
-    return fuelCost + monthlyMaintenance + monthlyParking + monthlyInsurance
-  })()
-
-  const electricMonthlyCost = (() => {
-    const electricityCost = (monthlyKm / 100) * electricCost.electricity * 30
-    return electricityCost + electricCost.maintenance + electricCost.parking + electricCost.insurance
-  })()
-
-  const monthlySavings = currentCost - electricMonthlyCost
-  const yearlySavings = monthlySavings * 12
+  const gasolinaFill = ((gasolinaCost - 100) / (1500 - 100)) * 100
+  const kmFill = ((monthlyKm - 100) / (3000 - 100)) * 100
 
   return (
     <section className="economy-calculator" id="economia">
-      <div className="calculator-container">
-        <div className="calculator-header">
-          <h2>Calcule sua Economia</h2>
-          <p>Descubra quanto você pode economizar ao mudar para uma moto elétrica</p>
-        </div>
+      <div className="calculator-wrapper">
+        <div className="calculator-glow-top" />
+        <div className="calculator-glow-bottom" />
 
-        <div className="calculator-content">
-          <div className="calculator-inputs">
-            <div className="input-group">
-              <label>Quilometragem mensal estimada</label>
-              <input
-                type="range"
-                min="100"
-                max="2000"
-                step="50"
-                value={monthlyKm}
-                onChange={(e) => setMonthlyKm(parseInt(e.target.value))}
-              />
-              <span className="input-value">{monthlyKm} km/mês</span>
+        <div className="calculator-grid">
+          {/* Left */}
+          <div className="calc-left">
+            <div className="calc-header">
+              <span className="section-label">Calculadora de economia</span>
+              <h2 className="section-title">
+                Pare de queimar<br />
+                <span style={{ color: 'var(--brand)', fontStyle: 'italic' }}>dinheiro.</span>
+              </h2>
+              <p className="calc-description">
+                Veja quanto você economiza trocando sua moto a combustão por uma Kerobike. Tudo em tempo real.
+              </p>
             </div>
 
-            <div className="input-group">
-              <label>Seu transporte atual</label>
-              <select value={currentTransport} onChange={(e) => setCurrentTransport(e.target.value)}>
-                <option value="car">Carro</option>
-                <option value="motorcycle">Moto a gasolina</option>
-                <option value="bus">Ônibus</option>
-              </select>
+            <div className="calc-sliders">
+              {/* Slider 1 */}
+              <div className="calc-slider-group">
+                <span className="calc-slider-label">Gasto mensal com gasolina</span>
+                <span className="calc-slider-value">R$ {gasolinaCost}</span>
+                <div className="calc-range-track">
+                  <div className="calc-range-fill" style={{ width: `${gasolinaFill}%` }} />
+                  <input
+                    type="range" min="100" max="1500" step="10"
+                    value={gasolinaCost}
+                    onChange={e => setGasolinaCost(parseInt(e.target.value))}
+                    className="calc-range-input"
+                    aria-label="Gasto mensal com gasolina"
+                  />
+                  <div className="calc-range-thumb" style={{ left: `${gasolinaFill}%` }} />
+                </div>
+                <div className="calc-range-limits">
+                  <span>R$ 100</span>
+                  <span>R$ 1500</span>
+                </div>
+              </div>
+
+              {/* Slider 2 */}
+              <div className="calc-slider-group">
+                <span className="calc-slider-label">Km rodados por mês</span>
+                <span className="calc-slider-value">{monthlyKm} km</span>
+                <div className="calc-range-track">
+                  <div className="calc-range-fill" style={{ width: `${kmFill}%` }} />
+                  <input
+                    type="range" min="100" max="3000" step="50"
+                    value={monthlyKm}
+                    onChange={e => setMonthlyKm(parseInt(e.target.value))}
+                    className="calc-range-input"
+                    aria-label="Km rodados por mês"
+                  />
+                  <div className="calc-range-thumb" style={{ left: `${kmFill}%` }} />
+                </div>
+                <div className="calc-range-limits">
+                  <span>100 km</span>
+                  <span>3000 km</span>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div className="calculator-results">
-            <div className="result-card current">
-              <h3>Custo Atual</h3>
-              <p className="amount">R$ {currentCost.toFixed(2)}</p>
-              <span className="period">por mês</span>
+          {/* Right */}
+          <div className="calc-result-card">
+            <p className="calc-result-label">Economia anual estimada</p>
+            <div className="calc-result-amount">
+              R$ {yearlySaving > 0 ? yearlySaving.toLocaleString('pt-BR') : '0'}
+            </div>
+            <p className="calc-result-note">
+              Sua moto se paga em menos de 12 meses apenas com a economia de combustível.
+            </p>
+
+            <div className="calc-result-divider" />
+
+            <div className="calc-result-stats">
+              <div className="calc-stat-item">
+                <span className="calc-stat-label">Por mês</span>
+                <span className="calc-stat-value">R$ {Math.max(0, Math.round(monthlySaving)).toLocaleString('pt-BR')}</span>
+              </div>
+              <div className="calc-stat-item">
+                <span className="calc-stat-label">Custo elétrico</span>
+                <span className="calc-stat-value">R$ {Math.round(electricMonthly)}</span>
+              </div>
+              <div className="calc-stat-item">
+                <span className="calc-stat-label">Manutenção</span>
+                <span className="calc-stat-value green">-85%</span>
+              </div>
             </div>
 
-            <div className="result-card electric">
-              <h3>Com Moto Elétrica</h3>
-              <p className="amount">R$ {electricMonthlyCost.toFixed(2)}</p>
-              <span className="period">por mês</span>
-            </div>
-
-            <div className="result-card savings">
-              <h3>Você Economiza</h3>
-              <p className="amount">R$ {monthlySavings.toFixed(2)}</p>
-              <span className="period">por mês</span>
-              <p className="yearly">R$ {yearlySavings.toFixed(2)} por ano</p>
-            </div>
+            <a href="#modelos" className="calc-cta-link">
+              Quero economizar agora
+            </a>
           </div>
         </div>
       </div>

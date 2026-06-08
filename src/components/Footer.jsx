@@ -1,63 +1,43 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
 import '../styles/footer.css'
 
 function Footer() {
-  const currentYear = new Date().getFullYear()
-
   return (
     <footer className="footer">
-      <div className="footer-content">
-        <div className="footer-section">
-          <h3>MOTO<span>E</span></h3>
-          <p>Mobilidade elétrica premium para todos.</p>
-          <div className="social-links">
-            <a href="#instagram">Instagram</a>
-            <a href="#facebook">Facebook</a>
-            <a href="#tiktok">TikTok</a>
-          </div>
-        </div>
-
-        <div className="footer-section">
-          <h4>Produtos</h4>
-          <ul>
-            <li><a href="#modelos">Ver Modelos</a></li>
-            <li><a href="#acessorios">Acessórios</a></li>
-            <li><a href="#comparar">Comparar Modelos</a></li>
-          </ul>
-        </div>
-
-        <div className="footer-section">
-          <h4>Empresa</h4>
-          <ul>
-            <li><a href="#sobre">Sobre Nós</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#carreiras">Carreiras</a></li>
-          </ul>
-        </div>
-
-        <div className="footer-section">
-          <h4>Suporte</h4>
-          <ul>
-            <li><a href="#faq">FAQ</a></li>
-            <li><a href="#contato">Contato</a></li>
-            <li><a href="#privacidade">Privacidade</a></li>
-            <li><a href="#termos">Termos de Serviço</a></li>
-          </ul>
-        </div>
-
-        <div className="footer-section">
-          <h4>Contato</h4>
-          <p>
-            📧 contato@motoeletrica.com<br/>
-            📞 (11) 3000-0000<br/>
-            📍 São Paulo, SP
+      <div className="footer-grid">
+        {/* Brand */}
+        <div>
+          <span className="footer-brand-logo">KERO<span>.</span></span>
+          <p className="footer-brand-desc">
+            A revolução da mobilidade elétrica no Brasil. Design funcional,
+            tecnologia de ponta e zero burocracia.
           </p>
+        </div>
+
+        {/* Nav */}
+        <div>
+          <span className="footer-col-title">Navegação</span>
+          <ul className="footer-links">
+            <li><a href="#modelos">Modelos</a></li>
+            <li><a href="#economia">Economia</a></li>
+            <li><a href="#entregas">Entregas</a></li>
+            <li><a href="#faq">Suporte</a></li>
+          </ul>
+        </div>
+
+        {/* Social */}
+        <div>
+          <span className="footer-col-title">Social</span>
+          <ul className="footer-links">
+            <li><a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">WhatsApp</a></li>
+            <li><a href="https://instagram.com" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          </ul>
         </div>
       </div>
 
       <div className="footer-bottom">
-        <p>&copy; {currentYear} MOTO Elétrica. Todos os direitos reservados.</p>
+        <p>© 2025 Kerobike Mobilidade Elétrica</p>
+        <p>Feito com ❤️ no Brasil</p>
       </div>
     </footer>
   )

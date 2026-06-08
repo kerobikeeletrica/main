@@ -1,148 +1,64 @@
+/* =============================
+   CONTACT WIDGET (WhatsApp floating)
+   ============================= */
 .contact-widget {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 999;
-  font-family: inherit;
+  bottom: 28px;
+  right: 28px;
+  z-index: 200;
 }
 
-.widget-toggle {
+.contact-widget a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background-color: #ff6b35;
-  color: white;
-  border: none;
-  font-size: 28px;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(255, 107, 53, 0.4);
-  transition: all 0.3s ease;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: var(--brand);
+  color: #000;
+  text-decoration: none;
+  position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 32px rgba(74,222,128,0.35);
 }
 
-.widget-toggle:hover {
-  background-color: #ff5722;
-  transform: scale(1.1);
-  box-shadow: 0 6px 16px rgba(255, 107, 53, 0.5);
+.contact-widget a:hover {
+  transform: scale(1.12);
+  box-shadow: 0 12px 48px rgba(74,222,128,0.5);
 }
 
-.contact-widget.open .widget-toggle {
-  background-color: #d32f2f;
+.contact-widget svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+  position: relative;
+  z-index: 2;
 }
 
-.widget-content {
+/* Ping animation ring */
+.contact-ping {
   position: absolute;
-  bottom: 80px;
-  right: 0;
-  width: 360px;
-  background-color: white;
-  border-radius: 12px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  animation: slideUp 0.3s ease;
+  inset: 0;
+  border-radius: 50%;
+  background: var(--brand);
+  opacity: 0.4;
+  animation: ping 1.8s ease-in-out infinite;
 }
 
-@keyframes slideUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.widget-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  padding: 20px;
-  border-bottom: none;
-}
-
-.widget-header h3 {
-  font-size: 18px;
-  font-weight: 700;
-  margin: 0 0 4px 0;
-}
-
-.widget-header p {
-  font-size: 12px;
-  opacity: 0.9;
-  margin: 0;
-}
-
-.widget-form {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.widget-form input,
-.widget-form textarea {
-  padding: 10px 12px;
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  font-size: 13px;
-  font-family: inherit;
-  resize: none;
-}
-
-.widget-form input:focus,
-.widget-form textarea:focus {
-  outline: none;
-  border-color: #ff6b35;
-  box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.1);
-}
-
-.widget-form .btn {
-  margin-top: 4px;
-  padding: 10px;
-  font-size: 13px;
-}
-
-.widget-contact-info {
-  padding: 16px 20px;
-  background-color: #f9f9f9;
-  border-top: 1px solid #e0e0e0;
-  font-size: 13px;
-  color: #666;
-}
-
-.widget-contact-info p {
-  margin: 6px 0;
-  line-height: 1.4;
-}
-
-@media (max-width: 640px) {
-  .widget-content {
-    width: 320px;
-    right: -10px;
-  }
-
-  .widget-toggle {
-    width: 56px;
-    height: 56px;
-    font-size: 24px;
-  }
-}
-
-@media (max-width: 480px) {
+@media (min-width: 768px) {
   .contact-widget {
-    bottom: 16px;
-    right: 16px;
+    bottom: 36px;
+    right: 36px;
   }
 
-  .widget-content {
-    width: 280px;
-    right: -5px;
+  .contact-widget a {
+    width: 68px;
+    height: 68px;
   }
 
-  .widget-toggle {
-    width: 52px;
-    height: 52px;
+  .contact-widget svg {
+    width: 32px;
+    height: 32px;
   }
 }
